@@ -1,0 +1,166 @@
+
+body {
+    font-family: "trajan-color", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.container {
+    width: 400px;
+    height: 600px;
+    background-color: #222222; /* attempted to make a dark gray */
+    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#ring-img {
+    position: absolute;
+    top: 41%;
+    left: 18%;
+    backface-visibility: hidden;
+    opacity: 0;
+}
+
+#tree-img {
+    position: absolute;
+    top: 43%;
+    left: 19%;
+    transform-style: preserve-3d; /* keep the 3d elements */
+    transition: transform 1.5s;
+    opacity: 0;
+}
+
+
+#tree-img {
+    animation: fadeIn 3s forwards; /* Add a fadeIn animation */
+    animation-delay: 7s;
+}
+#ring-img {
+    display: inline-block;
+    animation: rotate 18s linear infinite, fadeIn 3s forwards;
+    animation-delay: 5s;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+#ring-img img {
+    max-width: 100%;
+    height: auto;
+}
+
+.container .title,
+.container .author {
+    position: absolute;
+    font-size: 28px;
+    color: white;
+    opacity: 0;
+}
+
+.container .author {
+    top: 85%;
+    left: 25%;
+}
+
+#tree-img:hover {
+    transform: rotateY(180deg);
+    opacity: 0;
+}
+
+/* force the image to hide under the hover effect */
+#tree-img:hover img {
+    opacity: 0;
+}
+
+/* make the back-face hidden, but i think opacity overrides it */
+#tree-img img {
+    backface-visibility: hidden;
+}
+
+/* jrr tolkien text on the screen */
+.author {
+    animation: fadeIn 3s forwards; /* Add a fadeIn animation */
+    animation-delay: 8.5s;
+}
+
+/* make sure its block styled */
+#tree-img:hover .title,
+#tree-img:hover .author {
+    display: block;
+}
+
+/* attributes for when its hovered upon */
+#tree-img:hover::after {
+    content: 'The One Ring';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotateY(180deg);
+    font-size: 35px;
+    color: white;
+    text-align: center;
+}
+
+/* lotr text */
+.lotr {
+    font-size: 36px;
+    color: white;
+    text-align: center;
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+}
+
+/* conglomorate of my text */
+.small,
+.smaller,
+.large,
+.larger {
+    display: block;
+    margin-bottom: 10px;
+    opacity: 0;
+}
+
+.small {
+    font-size: 0.8em;
+    margin-top: 11px;
+    animation: fadeIn 1s forwards;
+    animation-delay: 1s;
+}
+
+.smaller {
+    font-size: 0.8em;
+    margin-top: 11px;
+    animation: fadeIn 3s forwards;
+    animation-delay: 3s;
+}
+
+.large {
+    font-size: 1.5em;
+    animation: fadeIn 2s forwards;
+    animation-delay: 2s;
+}
+
+.larger {
+    font-size: 2em;
+    animation: fadeIn 4s forwards;
+    animation-delay: 4s;
+}
+
+/* fade in key frame */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
